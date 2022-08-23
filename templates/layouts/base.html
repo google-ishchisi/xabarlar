@@ -1,0 +1,206 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% load static %}
+
+<!DOCTYPE html>
+<!--
+Template Name: Skaxis
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+-->
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link href="{% static 'css/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay light" style="background-image: 'assets/images/demo/backgrounds/01.png';"> 
+
+    <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div id="logo" class="fl_left"> 
+        <h1><a href="/">Xabar.uz</a></h1>
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul  class="clear">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a class="drop" href="#">Category</a>
+            <ul>
+              {% for i in categorys %}
+              <li><a href="{% url 'category' i.id %}">{{i.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a class="drop" href="#">Region</a>
+            <ul>
+              {% for i in regions %}
+              <li><a href="{% url 'region' i.id %}">{{ i.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          {% if not request.user.is_authenticated %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+          {% else %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% endif %}
+          <li style="margin-left: 90px;">
+          <form action="{% url 'search' %}" class="d-flex" method="POST">
+            {% csrf_token %}
+            <input type="search" placeholder="Search" name="q" class="form-control me-2">
+            <button class="btn btn-outline-success">Search</button>
+          </form></li>
+        </ul>
+      </nav>
+      <!-- ################################################################################################ -->
+    </header>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 333333333333333333333333331111111111111111------------------=? -->
+
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+
+
+    <div>
+        {% for m in messages %}
+        <div class="alert alert {{m.tags}} alert-dismissible mt-3">{{ m }}
+            <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+<div class="container">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+
+{% block content2 %}
+
+{% endblock %}
+
+
+<div class="wrapper row4">
+    <footer id="footer" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <div class="one_quarter first">
+        <h6 class="heading">Mauris ac pulvinar</h6>
+        <ul class="nospace btmspace-30 linklist contact">
+          <li><i class="fa fa-map-marker"></i>
+            <address>
+            Street Name &amp; Number, Town, Postcode/Zip
+            </address>
+          </li>
+          <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
+          <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+        </ul>
+        <ul class="faico clear">
+          <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+      <div class="one_quarter">
+        <h6 class="heading">Urna mauris suscipit</h6>
+        <ul class="nospace linklist">
+          <li><a href="#">Nunc condimentum ut donec</a></li>
+          <li><a href="#">Et tempus metus morbi platea</a></li>
+          <li><a href="#">Sed orci eu urna tristique</a></li>
+          <li><a href="#">Euismod ac in elit quisque</a></li>
+          <li><a href="#">Et porta odio ut gravida</a></li>
+        </ul>
+      </div>
+      <div class="one_quarter">
+        <h6 class="heading">Feugiat imperdiet</h6>
+        <ul class="nospace linklist">
+          <li><a href="#">Augue sit amet ligula</a></li>
+          <li><a href="#">Tristique iaculis semper</a></li>
+          <li><a href="#">Lorem suscipit maecenas</a></li>
+          <li><a href="#">Ultricies feugiat libero</a></li>
+          <li><a href="#">In gravida felis consectetur</a></li>
+        </ul>
+      </div>
+      <div class="one_quarter">
+        <h6 class="heading">Turpis sed non enim</h6>
+        <p class="nospace btmspace-15">Convallis laoreet mi quis ornare ante nam pretium dignissim justo amet consequat.</p>
+        <form method="post" action="#">
+          <fieldset>
+            <legend>Newsletter:</legend>
+            <input class="btmspace-15" type="text" value="" placeholder="Name">
+            <input class="btmspace-15" type="text" value="" placeholder="Email">
+            <button type="submit" value="submit">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+      <!-- ################################################################################################ -->
+    </footer>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear"> 
+      <!-- ################################################################################################ -->
+      <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+      <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+  
+
+
+<!--A: {{ STATIC_URL }}-->
+
+
+<!-- <div class="footer bg-dark position-relative">
+    <div style="color: #fff; " class="mt-5 text-center position-absolute">
+        &copy;copy; {% now "Y" %}
+    </div>
+
+</div> -->
+
+
+</body>
+<script src="{% static 'venom/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.backtotop.js' %}"></script>
+<script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+<script src="{% static 'assets/js/jquery.flexslider-min.js' %}"></script>
+</html>

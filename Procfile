@@ -1,0 +1,1 @@
+web: gunicorn sayt.wsgi --log-file -

@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<title>New | {{ category.name }}</title>
+<div class="wrapper row3">
+    <main class="hoc container clear"> 
+      <h3>{{ category.name }}ga doir yangiliklar</h3>
+
+      <ul class="nospace group overview">
+
+        {% for i in news %}
+        <li class="one_third">
+          <article><a href="/detail/{{ i.id }}"><img src="{{ i.img }}" alt=""></a>
+            <h6 class="heading">{{ i.title }}</h6>
+            <ul class="nospace meta">
+              <li><i class="fa fa-user"></i> <a href="#">{{i.author}}</a></li>
+              <li><i class="fa fa-tag"></i> <a href="#">{{ i.category }}</a></li>
+            </ul>
+            <p>{{ i.sumary }}</p>
+            <p>{{ i.date }}</p>
+            <footer class="nospace"><a class="btn btn-outline-danger" href="/detail/{{ i.id }}">Full Story &raquo;</a></footer>
+          </article>
+        </li>
+        {% endfor %}
+      
+      </ul>
+      <!-- ################################################################################################ -->
+      <!-- / main body -->
+      <div class="clear"></div>
+    </main>
+  </div>
+
+{% endblock content %}
+    

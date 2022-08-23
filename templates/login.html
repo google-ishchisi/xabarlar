@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+
+
+{% block content %}
+
+<title>Login</title>
+<div class="container col-lg-6 offset-lg-3 mt-5">
+    <h2>Login </h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" class="form-control" placeholder="Username">
+        <input type="password" name="password"  class="form-control mt-3" placeholder="Password">
+        <button type="submit" class="btn btn-outline-success mt-3">Login</button>
+    </form>
+</div>
+
+{% endblock content %}
+    

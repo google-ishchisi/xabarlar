@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="wrapper row3">
+    <main class="hoc container clear"> 
+      <!-- main body -->
+      <!-- ################################################################################################ -->
+      {% for new in new %}
+      <article class="group btmspace-80">
+        <div class="two_third first"><a href="{% url 'detail' new.id %}"><img class="borderedbox inspace-10" src="{{ new.img }}" alt=""></a></div>
+        <div class="one_third">
+          <h6 class="heading">{{ new.title }}</h6>
+          <ul class="nospace meta">
+            <li><i class="fa fa-user"></i> <a href="#">{{ new.author}}</a></li>
+            <li><i class="fa fa-tag"></i> <a href="#">{{ new.category }}</a></li>
+          </ul>
+          <p>{{ new.sumary }}</p>
+          <p>{{ new.body }}</p>
+          <footer class="nospace"><a class="btn btn-outline-danger" href="{% url 'detail' new.id %}">Full Story &raquo;</a></footer>
+        </div>
+      </article>
+      {% endfor %}
+      <!-- ################################################################################################ -->
+      <hr class="btmspace-80">
+
+      <div class="clear"></div>
+    </main>
+  </div>
+
+{% endblock content %}
+    

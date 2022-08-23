@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+ 
+{% block content %}
+<title>Register</title>
+<div class="container col-lg-6 offset-lg-3 mt-5">
+    <h2>Registratsiya</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input style="font-size: 20px;" class="form-control mt-3" type="text" name="ism" placeholder="First name">
+        <input style="font-size: 20px;" class="form-control mt-3" type="text" name="username" placeholder="Username">
+        <input style="font-size: 20px;" class="form-control mt-3" type="email" name="email" placeholder="Email">
+        <input style="font-size: 20px;" class="form-control mt-3" type="password" name="password1" placeholder="Password">
+        <input style="font-size: 20px;" class="form-control mt-3" type="password" name="password2" placeholder="Password again">
+        <button class="btn btn-success mt-3" type="submit">Registratsiya</button>
+    </form>
+</div>
+
+{% endblock content %}
+
+

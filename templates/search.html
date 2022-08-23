@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<title>{{ salom }}</title>
+
+<ul class="nospace group overview">
+
+    {% for i in post %}
+    <li class="one_third">
+      <article><a href="/detail/{{ i.id }}"><img src="{{ i.img }}" alt=""></a>
+        <h6 class="heading">{{ i.title }}</h6>
+        <ul class="nospace meta">
+          <li><i class="fa fa-user"></i> <a href="#">{{i.author}}</a></li>
+          <li><i class="fa fa-tag"></i> <a href="#">{{ i.category }}</a></li>
+        </ul>
+        <p>{{ i.sumary }}</p>
+        <p>{{ i.date }}</p>
+        <footer class="nospace"><a class="btn btn-outline-danger" href="/detail/{{ i.id }}">Full Story &raquo;</a></footer>
+      </article>
+    </li>
+    {% endfor %}
+  
+  </ul>
+
+{% endblock %}
